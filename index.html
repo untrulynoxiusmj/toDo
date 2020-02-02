@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            td:after {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            border-radius: 8px;
+            }
+
+            td:after { background: #6CF; }
+            h1 {
+                font-size: 45px;
+                line-height: 40px;
+                margin: 1em 0 .6em 0;
+                font-weight: lighter;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                position: relative;
+                color: #6Cf;
+            }
+            td {
+                margin: 1em 1em .6em 1em;
+                padding: 0em 0em 0em 20px;
+                font-weight: normal;
+                color: white;
+                font-weight: lighter;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                position: relative;
+                font-size: 30px;
+                line-height: 40px;
+                text-align: center;
+            }
+            body{
+                background-color: rgb(0, 0, 0);
+                color:#6Cf;
+                font-weight: lighter;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }   
+            button{
+                margin: 2em;
+                padding: 2em;
+                background-color: black;
+                color: rgb(255, 255, 255);
+                border: 2px solid #6Cf;
+                border-radius: 4px;
+                padding: 1em;
+                font-weight: lighter;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+            .add{
+                width: 8em;
+            }
+            table{
+                margin:2em;
+            }
+            tr{
+                margin:2em;
+                padding: 2em;
+            }
+            input[type=text] {
+            width: 36%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            background-color: black;
+            color: white;
+            border: 2px solid #6Cf;
+            border-radius: 4px;
+            font-size: inherit;
+            font-weight: lighter;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+        </style>
+    </head>
+    <body> <center>
+        <h1> To-Do List </h1>
+        <input type="text" class=work placeholder="Enter task here">
+        <button class=add >ADD</button> 
+        <div class=status>Status.......</div>
+        <div class=tasks ></div>
+    </center>
+        <script>
+            document.querySelector(".add").addEventListener('click', ()=> {
+                let toBeIns = document.querySelector(".work").value;
+                if (toBeIns == ''){
+                    document.querySelector(".status").textContent = "cool.....";
+                }
+                else{
+                    let table = document.createElement("table");
+                    let row = document.createElement("tr");
+                    let data = document.createElement("td");
+                    let del = document.createElement('button');
+                    del.onclick = () => {
+                        document.querySelector(".tasks").removeChild(table);
+                        document.querySelector(".status").textContent = "hehe :-)"
+                    }
+                    let op = document.createTextNode('done ?');
+                    let value = document.createTextNode(toBeIns);
+                    data.appendChild(value);
+                    row.appendChild(data);
+                    del.appendChild(op);
+                    row.appendChild(del);
+                    table.appendChild(row);
+                    document.querySelector(".tasks").appendChild(table);
+                    document.querySelector(".work").value = '';
+                    document.querySelector(".status").textContent = "headache :-(";
+                }
+            })
+        </script>
+    </body>
+</html>
